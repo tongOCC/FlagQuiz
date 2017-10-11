@@ -1,6 +1,7 @@
 package edu.orangecoastcollege.cs273.flagquiz;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -211,6 +214,21 @@ String quess = clickedButton.getText().toString();
 
 
     }
+    //override onCreateOptions to inflast settings
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //menu infater R.menu just inflates settings menu
+        getMenuInflater().inflate(R.menu.menu_settings,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    //responds to user clickign the settings gear icon
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent settingsIntent= new Intent(this, SetttingsActivity.class);
+        startActivity(settingsIntent);
+        return super.onOptionsItemSelected(item);
+    }
 }
